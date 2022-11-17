@@ -96,7 +96,7 @@ resource "azurerm_machine_learning_compute_cluster" "aml_compute_clust" {
   scale_settings {
     min_node_count                       = var.cluster.min_node
     max_node_count                       = var.cluster.max_node
-    scale_down_nodes_after_idle_duration = "PT300S" 
+    scale_down_nodes_after_idle_duration = "PT300S"
   }
 
   identity {
@@ -187,8 +187,8 @@ resource "azurerm_private_dns_a_record" "dns_blob" {
   zone_name           = azurerm_private_dns_zone.strblob_pv_dns_zone.name
   resource_group_name = var.rg_name
   ttl                 = 300
-  records             = [azurerm_private_endpoint.pe-str-blob.private_service_connection.0.private_ip_address,
-                        azurerm_private_endpoint.pe-str-blob-sec.private_service_connection.0.private_ip_address]
+  records = [azurerm_private_endpoint.pe-str-blob.private_service_connection.0.private_ip_address,
+  azurerm_private_endpoint.pe-str-blob-sec.private_service_connection.0.private_ip_address]
 }
 
 

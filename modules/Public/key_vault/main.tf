@@ -26,6 +26,7 @@ resource "azurerm_key_vault_access_policy" "kv_access_policy" {
   secret_permissions      = each.value.secret_permissions
   certificate_permissions = each.value.certificate_permission
   key_permissions         = each.value.key_permissions
+  tenant_id               = var.tenant_id
 }
 
 resource "azurerm_key_vault_access_policy" "kv_umi_access_policy" {
@@ -40,6 +41,7 @@ resource "azurerm_key_vault_access_policy" "kv_umi_access_policy" {
     "Recover",
   ]
 
+  tenant_id = var.tenant_id
 
   secret_permissions = [
     "Get",

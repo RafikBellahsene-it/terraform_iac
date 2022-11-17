@@ -59,25 +59,25 @@ variable "container_registry" {
 variable "private_endpoints" {
   type = map(object({
     "acr" = object({
-      vnet_id = string
+      vnet_id   = string
       subnet_id = string
     }),
     "storage" = object({
-      vnet_id = string
+      vnet_id   = string
       subnet_id = string
     }),
     "aml" = object({
-      vnet_id = string
+      vnet_id   = string
       subnet_id = string
     })
-  })) 
+  }))
 }
 variable "cluster" {
   type = object({
-    size = string
+    size      = string
     subnet_id = string
-    min_node = number
-    max_node = number
+    min_node  = number
+    max_node  = number
   })
-  
+
 }

@@ -33,10 +33,10 @@ variable "cmk" {
 
 variable "public_access" {
   type = object({
-    ip_rules = list(string)
+    ip_rules   = list(string)
     subnet_ids = list(string)
   })
-  
+
 }
 variable "app_insight" {
   type = object({
@@ -65,10 +65,10 @@ variable "container_registry" {
 
 variable "cluster" {
   type = object({
-    size = string
+    size      = string
     subnet_id = string
-    min_node = number
-    max_node = number
+    min_node  = number
+    max_node  = number
   })
-  
+
 }

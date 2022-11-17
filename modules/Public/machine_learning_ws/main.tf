@@ -105,7 +105,7 @@ resource "azurerm_machine_learning_compute_cluster" "aml_compute_clust" {
   scale_settings {
     min_node_count                       = var.cluster.min_node
     max_node_count                       = var.cluster.max_node
-    scale_down_nodes_after_idle_duration = "PT300S" 
+    scale_down_nodes_after_idle_duration = "PT300S"
   }
 
   identity {

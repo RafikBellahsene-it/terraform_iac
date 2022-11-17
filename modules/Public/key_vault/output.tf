@@ -5,5 +5,5 @@ output "kv_id" {
 
 output "kv_url" {
   description = "Key Vault URI"
-  value       =  azurerm_key_vault.public_kv.vault_uri
+  value       = azurerm_key_vault.public_kv.vault_uri
 }
