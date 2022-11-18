@@ -76,7 +76,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "vault_pv_dns_zone_vnet
 
 resource "azurerm_private_dns_a_record" "dns_a" {
   name                = var.key_vault_name
-  zone_name           = azurerm_private_dns_zone.vault_pv_dns_zone
+  zone_name           = azurerm_private_dns_zone.vault_pv_dns_zone.name
   resource_group_name = var.rg_name
   ttl                 = 300
   records             = [azurerm_private_endpoint.pe-vault.private_service_connection.0.private_ip_address]

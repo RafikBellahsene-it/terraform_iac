@@ -26,10 +26,10 @@ resource "azurerm_storage_account" "aml_storage" {
       user_assigned_identity_id = customer_managed_key.value.user_assigned_identity_id
       key_vault_key_id          = customer_managed_key.value.key_vault_key_id
     }
-  }
+  } 
 
   identity {
-    type         = var.encrypt_with_cmk ? "UserAssigned" : "SystemAssigned"
+    type         = var.encrypt_with_cmk ? "SystemAssigned, UserAssigned" : "SystemAssigned"
     identity_ids = var.encrypt_with_cmk ? [var.cmk["storage"].user_assigned_identity_id] : []
   }
 }
@@ -41,7 +41,7 @@ resource "azurerm_container_registry" "acr" {
   sku                           = var.container_registry.sku
   public_network_access_enabled = true
   identity {
-    type         = var.encrypt_with_cmk ? "UserAssigned" : "SystemAssigned"
+    type         = var.encrypt_with_cmk ? "SystemAssigned, UserAssigned" : "SystemAssigned"
     identity_ids = var.encrypt_with_cmk ? [var.cmk["acr"].user_assigned_identity_id] : []
   }
   dynamic "encryption" {
