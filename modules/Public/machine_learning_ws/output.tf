@@ -43,3 +43,7 @@ output "aml_id" {
 output "aml_identity" {
   value = azurerm_machine_learning_workspace.aml_ws.identity
 }
+
+output "aml_compute_identity" {
+  value = azurerm_machine_learning_compute_cluster.aml_compute_clust.identity
+}

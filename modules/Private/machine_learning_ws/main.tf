@@ -22,7 +22,7 @@ resource "azurerm_storage_account" "aml_storage" {
 
   dynamic "customer_managed_key" {
     for_each = (var.encrypt_with_cmk ? var.cmk["storage"] : {})
-    content = {
+    content {
       user_assigned_identity_id = customer_managed_key.value.user_assigned_identity_id
       key_vault_key_id          = customer_managed_key.value.key_vault_key_id
     }
@@ -46,7 +46,7 @@ resource "azurerm_container_registry" "acr" {
   }
   dynamic "encryption" {
     for_each = (var.encrypt_with_cmk ? var.cmk["acr"] : {})
-    content = {
+    content {
       enabled            = true
       key_vault_key_id   = encryption.value.key_vault_key_id
       identity_client_id = var.cmk["acr"].user_assigned_identity_id
@@ -71,7 +71,7 @@ resource "azurerm_machine_learning_workspace" "aml_ws" {
 
   dynamic "encryption" {
     for_each = (var.encrypt_with_cmk ? var.cmk["aml_ws"] : {})
-    content = {
+    content {
       key_id                    = encryption.value.key_vault_key_id
       key_vault_id              = encryption.value.key_vault_id
       user_assigned_identity_id = encryption.value.user_assigned_identity_id

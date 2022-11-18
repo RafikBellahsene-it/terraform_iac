@@ -24,11 +24,11 @@ variable "key_vault_id" {
 }
 
 variable "cmk" {
-  type = map(object({
+  type = map(map(object({
     user_assigned_identity_id = string
     key_vault_key_id          = string
     key_vault_id              = string
-  }))
+  })))
 }
 
 variable "public_access" {
@@ -66,7 +66,6 @@ variable "container_registry" {
 variable "cluster" {
   type = object({
     size      = string
-    subnet_id = string
     min_node  = number
     max_node  = number
   })

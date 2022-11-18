@@ -14,9 +14,3 @@ resource "azurerm_data_factory" "adf" {
   customer_managed_key_identity_id = var.cmk.user_assigned_identity_id
 
 }
-
-resource "azurerm_data_factory_integration_runtime_azure" "AzureIR" {
-  name            = "AutoResolveAzureIR"
-  data_factory_id = azurerm_data_factory.adf.id
-  location        = "AutoResolve"
-}

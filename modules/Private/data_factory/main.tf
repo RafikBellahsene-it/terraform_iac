@@ -15,12 +15,6 @@ resource "azurerm_data_factory" "adf" {
 
 }
 
-resource "azurerm_data_factory_integration_runtime_azure" "AzureIR" {
-  name            = "AutoResolveAzureIR"
-  data_factory_id = azurerm_data_factory.adf.id
-  location        = "AutoResolve"
-}
-
 resource "azurerm_data_factory_integration_runtime_self_hosted" "self_hosted_IR" {
   count = var.deploy_self_hosted_IR ? 1 : 0
   name            = "${var.adf_name}-selfIR"
